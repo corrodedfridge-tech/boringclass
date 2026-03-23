@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Cube Escape</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,28 +11,41 @@
         <canvas id="gameCanvas"></canvas>
         <div id="ui-overlay">
             <div id="title-screen">
+                <div class="title-cube"></div>
                 <h1>CUBE<br>ESCAPE</h1>
-                <p class="blink">PRESS SPACE OR TAP TO START</p>
+                <p class="subtitle">Escape the rising lava!</p>
+                <p class="blink start-prompt">PRESS SPACE OR TAP TO START</p>
                 <div class="controls-info">
-                    <p>← → or A/D to MOVE</p>
-                    <p>SPACE or W or ↑ to JUMP</p>
-                    <p>ESCAPE THE RISING LAVA!</p>
+                    <div class="control-row"><span class="key">←→</span> or <span class="key">A D</span> MOVE</div>
+                    <div class="control-row"><span class="key">SPACE</span> or <span class="key">↑</span> JUMP</div>
                 </div>
             </div>
             <div id="game-over-screen" class="hidden">
-                <h1>GAME OVER</h1>
-                <p id="final-score"></p>
-                <p id="high-score-display"></p>
-                <p class="blink">PRESS SPACE OR TAP TO RETRY</p>
+                <h1 class="dead-title">GAME OVER</h1>
+                <p id="final-score" class="score-line"></p>
+                <p id="high-score-display" class="score-line high"></p>
+                <p id="new-record" class="hidden record-text">★ NEW RECORD ★</p>
+                <p class="blink start-prompt">PRESS SPACE OR TAP TO RETRY</p>
             </div>
             <div id="win-screen" class="hidden">
-                <h1>YOU ESCAPED!</h1>
-                <p id="win-score"></p>
-                <p class="blink">PRESS SPACE OR TAP TO PLAY AGAIN</p>
+                <h1 class="win-title">YOU ESCAPED!</h1>
+                <p id="win-score" class="score-line"></p>
+                <p class="blink start-prompt">PRESS SPACE OR TAP TO PLAY AGAIN</p>
             </div>
         </div>
         <div id="hud" class="hidden">
-            <span id="score-display">HEIGHT: 0</span>
+            <div id="height-display">
+                <span id="height-icon">▲</span>
+                <span id="score-display">0m</span>
+            </div>
+            <div id="danger-indicator" class="hidden">
+                <span>⚠ LAVA CLOSE ⚠</span>
+            </div>
+        </div>
+        <div id="mobile-controls" class="hidden">
+            <div id="btn-left" class="mobile-btn">◀</div>
+            <div id="btn-jump" class="mobile-btn jump-btn">▲</div>
+            <div id="btn-right" class="mobile-btn">▶</div>
         </div>
     </div>
     <script src="game.js"></script>
